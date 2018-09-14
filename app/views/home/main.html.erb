@@ -3,16 +3,31 @@
 
 <%=link_to "Home", root_path, class: 'nav-link'%> 
 
+<h3>Receitas destaque</h3>
+<div id='recipes-featured'>
+  <% @featured_recipes.each do |recipe|%>
+    <h1><%= link_to(recipe.title, recipe_path(recipe)) %></h1>
+    <%= image_tag 'star.png'%>
+    <ul>
+      <li><%= recipe.recipe_type.name %></li>
+      <li><%= recipe.cuisine %></li>
+      <li><%= recipe.difficulty %></li>
+      <li><%= recipe.cook_time %> minutos</li>
+    </ul>
+  <% end %>
+</div>
 
-<% @recipes.each do |recipe|%>
-  <h1><%= link_to(recipe.title, recipe_path(recipe)) %></h1>
-
-  <ul>
-    <li><%= recipe.recipe_type.name %></li>
-    <li><%= recipe.cuisine %></li>
-    <li><%= recipe.difficulty %></li>
-    <li><%= recipe.cook_time %> minutos</li>
-  </ul>
-<%end %>
+<h3>Outras receitas</h3>
+<div id='other-recipes'>
+  <% @another_recipes.each do |recipe|%>
+    <h1><%= link_to(recipe.title, recipe_path(recipe)) %></h1>
+    <ul>
+      <li><%= recipe.recipe_type.name %></li>
+      <li><%= recipe.cuisine %></li>
+      <li><%= recipe.difficulty %></li>
+      <li><%= recipe.cook_time %> minutos</li>
+    </ul>
+  <% end %>
+</div>
 
 <%=link_to "Enviar uma receita",  new_recipe_path, class: 'nav-link'%>

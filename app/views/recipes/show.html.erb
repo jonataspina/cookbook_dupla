@@ -1,5 +1,10 @@
 <h1>Recipe Details</h1>
 <br>
+<%= flash[:info] %>
+<% if @recipe.featured? %>
+ <%= image_tag 'star.png' %>
+<%end%>
+
 <h1><%= @recipe.title %></h1>
 <br>
 <h3>Detalhes</h3>
@@ -15,3 +20,5 @@
 <p><%= @recipe.cook_method %></p>
 
 <%= link_to "Voltar",root_path,class:"btn btn-secondary" %>
+<%= link_to "Editar",edit_recipe_path(@recipe),class:"btn btn-primary" %>
+
